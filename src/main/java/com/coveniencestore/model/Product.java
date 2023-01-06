@@ -1,6 +1,4 @@
 package com.coveniencestore.model;
 
-public class Main {
-
-
+public class Product {
 }
