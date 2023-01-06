@@ -25,7 +25,7 @@ public class Product {
     }
 
     public void checkProductAvailability(){
-        if(this.getQuantity() == 0){
+        if(this.getQuantity() <= 0){
             this.setProductAvailability(OUT_OF_STOCK);
         }else {
             this.setProductAvailability(AVAILABLE);
