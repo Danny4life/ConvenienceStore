@@ -7,5 +7,5 @@ public interface CustomerService {
 
     void addProductsToCart(Customer customer, Store store, String productName, int quantity);
 
-    void fundWallet(Customer customer, double amount);
+    String fundWallet(Customer customer, double amount);
 }

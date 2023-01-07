@@ -30,7 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void fundWallet(Customer customer, double amount) {
-
+    public String fundWallet(Customer customer, double amount) {
+        double newBalance = customer.getWallet().getBalance() + amount;
+        customer.getWallet().setBalance(newBalance);
+        return "Successfully added " + amount + " to wallet. Your new balance is " + customer.getWallet().getBalance();
     }
 }
