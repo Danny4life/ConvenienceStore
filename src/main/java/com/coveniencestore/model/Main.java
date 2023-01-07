@@ -14,6 +14,12 @@ public class Main {
        Staff staff1 = new Staff("joe", "doe", "sapele road", Gender.MALE, 001, Role.CASHIER);
 
         System.out.println(staff1.getRole());
+
+        Wallet wallet = new Wallet();
+
+        wallet.setBalance(5000.00);
+
+        System.out.println(wallet.getBalance());
     }
 
 
