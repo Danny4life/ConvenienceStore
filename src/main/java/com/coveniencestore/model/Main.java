@@ -1,5 +1,9 @@
 package com.coveniencestore.model;
 
+import com.coveniencestore.enums.Gender;
+import com.coveniencestore.enums.Role;
+
+import static com.coveniencestore.enums.Gender.MALE;
 import static com.coveniencestore.enums.ProductAvailability.AVAILABLE;
 import static com.coveniencestore.enums.ProductCategory.SHOES;
 
@@ -7,18 +11,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-        Product shoe = new Product("lofas", 300.00, 50, SHOES);
+       Staff staff1 = new Staff("joe", "doe", "sapele road", Gender.MALE, 001, Role.CASHIER);
 
-
-
-        System.out.println("we have a total of " +  "" + shoe.getQuantity() + " " + shoe.getName()
-                + " " + "which will be sold at " + "" + shoe.getPrice() + "" +
-                "$" + " " + "per " + "" + shoe.getName());
-
-        System.out.println(shoe.getQuantity());
-        System.out.println(shoe.getProductCategory());
-        System.out.println(shoe.getProductAvailability());
-
+        System.out.println(staff1.getRole());
     }
 
 
