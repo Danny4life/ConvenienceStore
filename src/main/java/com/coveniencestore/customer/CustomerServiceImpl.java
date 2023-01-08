@@ -11,7 +11,7 @@ import static com.coveniencestore.enums.ProductAvailability.AVAILABLE;
 public class CustomerServiceImpl implements CustomerService {
     @Override
     public void addProductsToCart(Customer customer, Store store, String productName, int quantity) {
-        for(Product product : store.getListOfProductsInStore() ){
+        for(Product product : store.getListOfProductsInStore()){
             if(product.getName().equalsIgnoreCase(productName)){
                 if(product.getProductAvailability().equals(AVAILABLE)){
                     if(product.getQuantity() >= quantity){
