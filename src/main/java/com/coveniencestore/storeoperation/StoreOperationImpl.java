@@ -2,11 +2,10 @@ package com.coveniencestore.storeoperation;
 
 import com.coveniencestore.enums.Qualification;
 import com.coveniencestore.enums.Role;
-import com.coveniencestore.exception.AlreadyAppliedException;
-import com.coveniencestore.exception.ApplicantNotAppliedException;
-import com.coveniencestore.exception.ApplicantNotQualifiedException;
-import com.coveniencestore.exception.StaffNotAuthorizedException;
+import com.coveniencestore.exception.*;
 import com.coveniencestore.model.*;
+
+import java.util.Map;
 
 import static com.coveniencestore.enums.Qualification.OND;
 
@@ -40,7 +39,30 @@ public class StoreOperationImpl implements StoreOperation{
 
     @Override
     public String sellProducts(Store store, Customer customer, Staff staff) {
-        return null;
+        if(staff.getRole().equals(Role.CASHIER)){
+            double totalCostOfProductsInCart = customer.getCart().getTotalCostOfProductInCart();
+            Map<Product, Integer> productsInCart = customer.getCart().getProductsInCart();
+            for(Map.Entry<Product, Integer> products : productsInCart.entrySet()){
+                Product product = products.getKey();
+                Integer quantity = products.getValue();
+                totalCostOfProductsInCart += getTotalCostOfProductInCart(product, quantity);
+            }
+            return checkIfCustomerHasEnoughFunds(store, customer, staff, totalCostOfProductsInCart);
+
+        }else {
+            throw new InsufficientFundException("Your balance is not enough to perform this transaction");
+        }
+
+    }
+
+    private String checkIfCustomerHasEnoughFunds(Store store, Customer customer, Staff staff, double totalCostOfProductsInCart) {
+
+        return "";
+    }
+
+    private double getTotalCostOfProductInCart(Product product, Integer quantity) {
+
+        return 0;
     }
 
     @Override

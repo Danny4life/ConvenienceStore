@@ -22,5 +22,6 @@ public class Cart {
 
     public void setTotalCostOfProductInCart(double totalCostOfProductInCart) {
         this.totalCostOfProductInCart = totalCostOfProductInCart;
+
     }
 }
