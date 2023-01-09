@@ -8,7 +8,7 @@ public class Staff extends Person{
     private int staffID;
     private Role role;
 
-    public Staff(String firstName, String lastName, String address, Gender gender, int staffID, Role role) {
+    public Staff(String firstName, String lastName, String address, Gender gender, Role role) {
         super(firstName, lastName, address, gender);
         this.staffID = staffID + staffID;
         this.role = role;
