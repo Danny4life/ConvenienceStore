@@ -1,5 +1,6 @@
 package com.coveniencestore.storeoperation;
 
+import com.coveniencestore.enums.ProductCategory;
 import com.coveniencestore.enums.Qualification;
 import com.coveniencestore.enums.Role;
 import com.coveniencestore.exception.*;
@@ -71,6 +72,32 @@ public class StoreOperationImpl implements StoreOperation{
 
     }
 
+    @Override
+    public Product[] viewProductByCategory(Store store, String productCategory) {
+        System.out.printf("Viewing products in %s category...\\n\", productCategory");
+        Product[] productsByCategory;
+        int index = 0;
+        ProductCategory category = ProductCategory.valueOf(productCategory.toUpperCase());
+
+        for(Product product : store.getListOfProductsInStore()){
+            if(product.getProductCategory().equals(category)) index++;
+        }
+
+        productsByCategory = new Product[index];
+        int counter = 0;
+
+        for(Product product : store.getListOfProductsInStore()){
+            if(product.getProductCategory().equals(category)){
+                productsByCategory[counter++] = product;
+            }
+        }
+       if(productsByCategory.length == 0){
+           System.out.println("There are no products in this category yet");
+       }
+
+       return productsByCategory;
+    }
+
     private String generateReceipt(Store store, Customer customer, double totalCostOfProductsInCart, Staff staff) {
 
         return "";
@@ -81,8 +108,5 @@ public class StoreOperationImpl implements StoreOperation{
         return 0;
     }
 
-    @Override
-    public Product[] viewProductByCategory(Store store, String productCategory) {
-        return new Product[0];
-    }
+
 }
