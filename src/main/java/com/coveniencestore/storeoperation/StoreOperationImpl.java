@@ -75,7 +75,7 @@ public class StoreOperationImpl implements StoreOperation{
 
     @Override
     public Product[] viewProductByCategory(Store store, String productCategory) {
-        System.out.printf("Viewing products in %s category...\\n\", productCategory");
+        System.out.printf("Viewing products in %s category...\n", productCategory);
         Product[] productsByCategory;
         int index = 0;
         ProductCategory category = ProductCategory.valueOf(productCategory.toUpperCase());

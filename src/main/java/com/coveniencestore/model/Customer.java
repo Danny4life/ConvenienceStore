@@ -7,10 +7,10 @@ public class Customer extends Person{
     private final Cart cart;
     private final Wallet wallet;
 
-    public Customer(String firstName, String lastName, String address, Gender gender, Cart cart, Wallet wallet) {
+    public Customer(String firstName, String lastName, String address, Gender gender) {
         super(firstName, lastName, address, gender);
-        this.cart = cart;
-        this.wallet = wallet;
+        this.cart = new Cart();
+        this.wallet = new Wallet();
     }
 
     public Cart getCart() {
