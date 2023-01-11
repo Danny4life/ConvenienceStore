@@ -1,5 +1,6 @@
 package com.coveniencestore.storeoperation;
 
+import com.coveniencestore.enums.ProductAvailability;
 import com.coveniencestore.enums.ProductCategory;
 import com.coveniencestore.enums.Qualification;
 import com.coveniencestore.enums.Role;
@@ -127,8 +128,25 @@ public class StoreOperationImpl implements StoreOperation{
     }
 
     private double getTotalCostOfProductInCart(Product product, Integer quantity) {
+        double totalCostOfProductsInCart;
+        if(product.getProductAvailability().equals(ProductAvailability.AVAILABLE)){
+            if(product.getQuantity() >= quantity){
+                totalCostOfProductsInCart = product.getPrice() * quantity;
+                product.setQuantity(product.getQuantity() - quantity);
+                product.checkAndSetAvailability();
 
-        return 0;
+                return totalCostOfProductsInCart;
+            }else {
+                throw new QuantityExceededException("We do not have up to " + quantity
+                        + " available, " + "only " + product.getQuantity() + " is/are left.");
+            }
+        }
+
+        else {
+            throw new OutOfStockException("Product " + product.getName() + " is no longer available in the store");
+        }
+
+
     }
 
 
