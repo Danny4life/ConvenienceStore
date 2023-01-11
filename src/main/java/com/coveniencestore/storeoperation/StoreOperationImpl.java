@@ -57,6 +57,22 @@ public class StoreOperationImpl implements StoreOperation{
 
     private String checkIfCustomerHasEnoughFunds(Store store, Customer customer, Staff staff, double totalCostOfProductsInCart) {
 
+        if(customer.getWallet().getBalance() >= totalCostOfProductsInCart){
+            double newWalletBalance = customer.getWallet().getBalance() - totalCostOfProductsInCart;
+            customer.getWallet().setBalance(newWalletBalance);
+            String receipt = generateReceipt(store, customer, totalCostOfProductsInCart, staff);
+            customer.getCart().setTotalCostOfProductInCart(0);
+            customer.getCart().getProductsInCart().clear();
+
+            return receipt;
+        }else {
+            throw new InsufficientFundException("Your balance is not enough to perform this transaction");
+        }
+
+    }
+
+    private String generateReceipt(Store store, Customer customer, double totalCostOfProductsInCart, Staff staff) {
+
         return "";
     }
 
