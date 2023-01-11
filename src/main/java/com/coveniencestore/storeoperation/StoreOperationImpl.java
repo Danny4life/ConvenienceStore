@@ -100,7 +100,30 @@ public class StoreOperationImpl implements StoreOperation{
 
     private String generateReceipt(Store store, Customer customer, double totalCostOfProductsInCart, Staff staff) {
 
-        return "";
+        StringBuilder productsBought = new StringBuilder();
+
+        for(Map.Entry<Product, Integer> product : customer.getCart().getProductsInCart().entrySet()){
+            productsBought.append(product.getKey().getName())
+                    .append(", ")
+                    .append("price ")
+                    .append(product.getKey().getPrice())
+                    .append(", ")
+                    .append(" quantity bought ")
+                    .append(product.getValue())
+                    .append("\n");
+        }
+
+        return "\n" +
+                "Payment Successful! \n" +
+                "Receipt For : " + customer.getFirstName() + "\n" +
+                "======================\n" +
+                "Products bought : " + productsBought + "\n" +
+                "======================\n" +
+                "Total cost of Products bought : " + totalCostOfProductsInCart + "\n" +
+                "======================\n" +
+                "Processed by " + staff.getFirstName() + "\n" +
+                "======================\n" +
+                "Thank you for shopping with us at " + store.getName() + "!" + "\n";
     }
 
     private double getTotalCostOfProductInCart(Product product, Integer quantity) {
