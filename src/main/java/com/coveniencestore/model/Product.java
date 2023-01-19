@@ -24,13 +24,13 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public void checkProductAvailability() {
-        if (this.getQuantity() <= 0) {
-            this.setProductAvailability(OUT_OF_STOCK);
-        } else {
-            this.setProductAvailability(AVAILABLE);
-        }
-    }
+//    public void checkProductAvailability() {
+//        if (this.getQuantity() <= 0) {
+//            this.setProductAvailability(OUT_OF_STOCK);
+//        } else {
+//            this.setProductAvailability(AVAILABLE);
+//        }
+//    }
 
     public void checkAndSetAvailability() {
         if (this.getQuantity() == 0)
